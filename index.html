@@ -2,9 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>GIFy.me</title>
+
+    <!-- CSS (bulma.io) + Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
 </head>
 <body>
-$END$
+
+<!-- Header -->
+<section class="section">
+    <div class="container">
+        <div class="heading has-text-centered">
+            <h1 class="title">GIFy.me</h1>
+            <h2 class="subtitle">
+                A simple animated GIF creator
+            </h2>
+        </div>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="section">
+    <div class="container">
+        <h1 class="title">Drop or select 4 images</h1>
+        <hr/>
+        <div class="content">
+            <div class="message is-danger" hidden>
+                <div class="message-header">Woops, something is wrong!</div>
+                <div class="message-body">Error message...</div>
+            </div>
+            <div class="columns is-mobile">
+                <!-- TODO Button is not centered on resize -->
+                <div class="column is-2 is-offset-5">
+                    <a class="button is-large is-primary">
+                        <span class="icon"><i class="fa fa-folder-open"></i></span>
+                        <span>Browse...</span>
+                    </a>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-horizontal">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification">
+                            <p class="title">image1.jpg</p>
+                            <figure class="image is-4by3">
+                                <img src="http://placehold.it/640x480">
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification">
+                            <p class="title">image2.jpg</p>
+                            <figure class="image is-4by3">
+                                <img src="http://placehold.it/640x480">
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification">
+                            <p class="title">image3.jpg</p>
+                            <figure class="image is-4by3">
+                                <img src="http://placehold.it/640x480">
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification">
+                            <p class="title">image4.jpg</p>
+                            <figure class="image is-4by3">
+                                <img src="http://placehold.it/640x480">
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <progress class="progress is-primary" value="30" max="100">30%</progress>
+            <hr/>
+            <div class="columns is-mobile">
+                <div class="column is-half">
+                    <label class="label">How many loops?</label>
+                    <p class="control">
+                        <input class="input" type="number" min="0" max="99" value="0" disabled>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            Infinite
+                        </label>
+                    </p>
+                </div>
+                <div class="column is-half">
+                    <label class="label">Delay between frames?</label>
+                    <p class="control">
+                        <input class="input" type="number" min="0" max="5000" value="100">
+                        <label class="checkbox is-pulled-right">
+                            in milliseconds
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="columns is-mobile">
+                <!-- TODO Button is not centered on resize -->
+                <div class="column is-2 is-offset-5">
+                    <a class="button is-large is-primary is-disabled">
+                        <span class="icon"><i class="fa fa-gear"></i></span>
+                        <span>Create GIF!</span>
+                    </a>
+                </div>
+            </div>
+            <!-- optional
+            <div class="columns is-mobile">
+                <div class="column is-2">
+                    <label class="label">Options</label>
+                    <p class="control">
+                        <input class="input" type="number" placeholder="How many loops?" min="0" max="999">
+                    </p>
+                    <p class="control">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Infinite
+                        </label>
+                    </p>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                <strong>GIFy.me</strong> by <a href="http://saerasoft.com">Matteo Paonessa</a>. The source code is
+                licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            </p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
