@@ -8,10 +8,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- JavaScript -->
+    <!-- JavaScript
     <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+    <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
     <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
+    <script src="js/jquery.fileupload-image.js"></script>
+    <script src="js/jquery.fileupload-process.js"></script>
+    <script src="js/jquery.fileupload-validate.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/uploader.js"></script> -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/load-image.all.min.js"></script>
+    <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+    <script src="js/jquery.fileupload-process.js"></script>
+    <script src="js/jquery.fileupload-image.js"></script>
+    <script src="js/jquery.fileupload-validate.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/uploader.js"></script>
 </head>
 <body>
 
@@ -40,49 +58,49 @@
             <div class="columns is-mobile">
                 <!-- TODO Button is not centered on resize -->
                 <div class="column is-2 is-offset-5">
-                    <a class="button is-large is-primary">
+                    <a class="button is-large is-primary" id="browse-button">
                         <span class="icon"><i class="fa fa-folder-open"></i></span>
                         <span>Browse...</span>
                     </a>
                 </div>
+                <input id="fileupload" type="file" name="files[]" multiple hidden>
             </div>
-            <div class="tile is-ancestor">
-                <div class="tile is-parent is-horizontal">
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification">
-                            <p class="title">image1.jpg</p>
-                            <figure class="image is-4by3">
-                                <img src="http://placehold.it/640x480">
-                            </figure>
-                        </article>
-                    </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification">
-                            <p class="title">image2.jpg</p>
-                            <figure class="image is-4by3">
-                                <img src="http://placehold.it/640x480">
-                            </figure>
-                        </article>
-                    </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification">
-                            <p class="title">image3.jpg</p>
-                            <figure class="image is-4by3">
-                                <img src="http://placehold.it/640x480">
-                            </figure>
-                        </article>
-                    </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification">
-                            <p class="title">image4.jpg</p>
-                            <figure class="image is-4by3">
-                                <img src="http://placehold.it/640x480">
-                            </figure>
-                        </article>
+            <div id="files">
+                <div class="tile is-ancestor">
+                    <!-- TODO long file names should be cropped -->
+                    <div class="tile is-parent is-horizontal" id="context">
+                        <div class="tile is-parent is-3">
+                            <article class="tile is-child notification">
+                                <p class="subtitle"></p>
+                                <figure class="image is-4by3">
+                                </figure>
+                            </article>
+                        </div>
+                        <div class="tile is-parent is-3">
+                            <article class="tile is-child notification">
+                                <p class="subtitle"></p>
+                                <figure class="image is-4by3">
+                                </figure>
+                            </article>
+                        </div>
+                        <div class="tile is-parent is-3">
+                            <article class="tile is-child notification">
+                                <p class="subtitle"></p>
+                                <figure class="image is-4by3">
+                                </figure>
+                            </article>
+                        </div>
+                        <div class="tile is-parent is-3">
+                            <article class="tile is-child notification">
+                                <p class="subtitle"></p>
+                                <figure class="image is-4by3">
+                                </figure>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
-            <progress class="progress is-primary" value="30" max="100">30%</progress>
+            <progress class="progress is-primary" value="0" max="100">30%</progress>
             <hr/>
             <div class="columns is-mobile">
                 <div class="column is-half">
@@ -108,7 +126,7 @@
             <div class="columns is-mobile">
                 <!-- TODO Button is not centered on resize -->
                 <div class="column is-2 is-offset-5">
-                    <a class="button is-large is-primary is-disabled">
+                    <a class="button is-large is-primary" id="create-button" disabled="true">
                         <span class="icon"><i class="fa fa-gear"></i></span>
                         <span>Create GIF!</span>
                     </a>
