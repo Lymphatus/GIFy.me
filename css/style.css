@@ -6543,6 +6543,14 @@ a.panel-block:hover {
 }
 /*# sourceMappingURL=bulma.css.map */
 
+/* CUSTOM CSS */
+
 img {
     object-fit: contain;
+}
+
+.is-fake, .is-fake:active {
+    border: none;
+    cursor: default;
+    box-shadow: none;
 }

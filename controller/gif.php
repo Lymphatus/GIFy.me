@@ -13,7 +13,6 @@ $params_array = array(
     'base_folder' => $_POST['UUID']);
 //TODO Better error handling on return
 if (!validateParameters($params_array)) {
-    echo "Error validating parameters";
     return;
 }
 
@@ -30,22 +29,18 @@ function validateParameters($parameters)
     */
 
     if (!(ctype_digit($parameters['loops']) || ctype_digit($parameters['loops']))) {
-        echo "Invalid ctype";
         return false;
     }
 
     if ($parameters['loops'] < 1 || $parameters['loops'] > 99) {
-        echo "Invalid loops";
         return false;
     }
 
     if ($parameters['delay'] < 10 || $parameters['delay'] > 5000) {
-        echo "Invalid delay";
         return false;
     }
 
     if (!preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i', $parameters['base_folder'])) {
-        echo "Invalid uuid";
         return false;
     }
 

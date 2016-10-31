@@ -23,8 +23,10 @@ $(document).ready(function () {
                 $("#create-button").removeClass("is-loading").attr("href", data);
                 $("#create-button-label").html("Download");
                 $("#create-button-icon").addClass("fa-download").removeClass("fa-gear");
+                //Change the create button into the download one
                 isGIFAvailable = true;
                 $("#result").attr("src", data);
+                //Scroll to the GIF
                 $('html, body').animate({
                     scrollTop: $("#result").offset().top
                 }, 1000);
@@ -71,6 +73,7 @@ $(document).ready(function () {
     var previewNumber = 0;
     $('#fileupload').fileupload({
         //Max file size is set by php.ini
+        //We can add it here if we really want to
         url: "controller/index.php",
         dataType: 'json',
         acceptFileTypes: /(\.|\/)(jpe?g|png)$/i,
@@ -93,17 +96,17 @@ $(document).ready(function () {
     }).on('fileuploadadd', function (e, data) {
         $(".message-body").html("");
         $(".message").attr("hidden", true);
+        //Show the images thumbnail by fading in
         $("#files-container").fadeTo(1000, 1.0);
         data.formData = {
             UUID: UUID
         };
         console.log(data);
-    }).on('fileuploadstart', function (e, data) {
-
     }).on('fileuploadprocessdone', function (e, data) {
         data.context = $("#context");
         var node = data.context;
         $.each(data.files, function (index, file) {
+            //Set the image thumbnail
             var figureSelector = $("figure")[previewNumber];
             if (file.preview) {
                 var previewImage = node.find(figureSelector).append("<img>");
@@ -114,6 +117,7 @@ $(document).ready(function () {
     }).on('fileuploadprocessalways', function (e, data) {
         $.each(data.files, function (index, file) {
             if (file.error) {
+                //Show an error if something is wrong
                 $(".message").attr("hidden", false);
                 $(".message-body").append("<li>" + file.name + ": " + file.error + "</li>");
             }
@@ -121,7 +125,8 @@ $(document).ready(function () {
     }).on('fileuploadprogressall', function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('.progress').val(progress);
-    }).on('fileuploaddone', function (e, data) {
+    }).on('fileuploaddone', function () {
+        //If we reached 4 uploaded images, it's time to show controls
         currentImagesNumber++;
         $("#create-button").attr("disabled", currentImagesNumber !== 4);
         if (currentImagesNumber === 4) {
@@ -131,13 +136,12 @@ $(document).ready(function () {
             }, 1000);
         }
     }).on('fileuploadfail', function (e, data) {
+        //Just error showing
         $.each(data.files, function (index, file) {
             if (file.error) {
                 $(".message").attr("hidden", false);
                 $(".message-body").append("<li>" + file.name + ": " + file.error + "</li>");
             }
         });
-    }).on('fileuploadalways', function (e, data) {
-        console.log(e);
     });
 });

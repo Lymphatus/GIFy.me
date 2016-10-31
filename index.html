@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>GIFy.me</title>
 
-    <!-- CSS (bulma.io) + Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -42,9 +42,8 @@
                 <div class="message-header">Woops, something is wrong!</div>
                 <div class="message-body"></div>
             </div>
-            <div class="columns is-mobile">
-                <!-- TODO Button is not centered on resize -->
-                <div class="column is-2 is-offset-5">
+            <div class="columns">
+                <div class="column is-2 has-text-centered is-offset-5">
                     <a class="button is-large is-primary" id="browse-button">
                         <span class="icon"><i class="fa fa-folder-open"></i></span>
                         <span>Browse...</span>
@@ -52,6 +51,7 @@
                 </div>
                 <input id="fileupload" type="file" name="files[]" multiple hidden>
             </div>
+            <!-- Actual file container -->
             <div id="files-container" hidden>
                 <div id="files">
                     <div class="tile is-ancestor">
@@ -85,32 +85,36 @@
                 </div>
                 <progress class="progress is-primary" value="0" max="100">30%</progress>
             </div>
-            <div id="control-container" hidden>
+            <!-- Controls -->
+            <div id="control-container">
                 <hr/>
-                <div class="columns is-mobile">
+                <div class="columns">
                     <div class="column is-half">
                         <label class="label">How many loops?</label>
                         <p class="control">
                             <input class="input" type="number" min="2" max="99" value="2" id="param-gif-loops" disabled>
-                            <label class="checkbox">
-                                <input type="checkbox" id="infinite-checkbox" checked>
-                                Infinite
-                            </label>
                         </p>
+                        <label class="checkbox">
+                            <input type="checkbox" id="infinite-checkbox" checked>
+                            Infinite
+                        </label>
                     </div>
                     <div class="column is-half">
                         <label class="label">Delay between frames?</label>
-                        <p class="control">
-                            <input class="input" type="number" min="10" max="5000" value="100" id="param-gif-delay">
-                            <label class="checkbox is-pulled-right">
-                                in milliseconds
-                            </label>
-                        </p>
+                        <div class="control is-grouped">
+                            <p class="control is-expanded">
+                                <input class="input" type="number" min="10" max="5000" value="100" id="param-gif-delay">
+                            </p>
+                            <p class="control">
+                                <a class="button is-outlined is-fake">
+                                    in milliseconds
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="columns is-mobile">
-                    <!-- TODO Button is not centered on resize -->
-                    <div class="column is-2 is-offset-5">
+                <div class="columns">
+                    <div class="column is-2 is-offset-5 has-text-centered">
                         <a class="button is-large is-primary" id="create-button" disabled download>
                             <span class="icon"><i class="fa fa-gear" id="create-button-icon"></i></span>
                             <span id="create-button-label">Create GIF!</span>
@@ -133,7 +137,7 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                <strong>GIFy.me</strong> by <a href="http://saerasoft.com">Matteo Paonessa</a>. The source code is
+                <strong>GIFy.me</strong> - <a href="http://saerasoft.com">Matteo Paonessa</a>. The source code is
                 licensed
                 <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
             </p>
