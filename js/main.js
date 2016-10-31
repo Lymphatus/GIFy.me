@@ -67,6 +67,7 @@ $(document).ready(function () {
     /* --- UPLOADER --- */
 
     var currentImagesNumber = 0;
+    var previewNumber = 0;
     $('#fileupload').fileupload({
         //Max file size is set by php.ini
         url: "controller/index.php",
@@ -101,14 +102,14 @@ $(document).ready(function () {
     }).on('fileuploadprocessdone', function (e, data) {
         data.context = $("#context");
         var node = data.context;
-        console.log(currentImagesNumber);
         $.each(data.files, function (index, file) {
-            var figureSelector = $("figure")[currentImagesNumber];
+            var figureSelector = $("figure")[previewNumber];
             if (file.preview) {
                 var previewImage = node.find(figureSelector).append("<img>");
                 previewImage.find("img").attr("src", file.preview.toDataURL());
             }
         });
+        previewNumber++;
     }).on('fileuploadprocessalways', function (e, data) {
         $.each(data.files, function (index, file) {
             if (file.error) {
