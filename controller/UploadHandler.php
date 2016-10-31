@@ -96,9 +96,9 @@ class UploadHandler
             'max_file_size' => null,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
-            'max_number_of_files' => null,
+            'max_number_of_files' => 4,
             // Defines which files are handled as image files:
-            'image_file_types' => '/\.(gif|jpe?g|png)$/i',
+            'image_file_types' => '/\.(jpe?g|png)$/i',
             // Use exif_imagetype on all files to correct file extensions:
             'correct_image_extensions' => false,
             // Image resolution restrictions:
@@ -1148,6 +1148,9 @@ class UploadHandler
 
     protected function handle_form_data($file, $index) {
         // Handle form data, e.g. $_POST['description'][$index]
+        $uuid = htmlspecialchars($_POST['UUID']);
+        $this->options['upload_dir'] = $_SERVER['DOCUMENT_ROOT'].'/storage/' . $uuid . '/';
+        $this->options['upload_url'] = $_SERVER['SERVER_NAME'].'/storage/' . $uuid . '/';
     }
 
     protected function get_version_param() {

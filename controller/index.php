@@ -1,6 +1,8 @@
 <?php
-
-//TODO remove for security reasons
-error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-$upload_handler = new UploadHandler();
+
+//No thumbnails generation
+$options = array(
+    'image_versions' => array()
+);
+$upload_handler = new UploadHandler($options);
