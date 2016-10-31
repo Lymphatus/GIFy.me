@@ -55,7 +55,7 @@ function validateParameters($parameters)
 function createGIF($params)
 {
     //Get the images
-    $frames = $_SERVER['DOCUMENT_ROOT'] . "storage/". $params['base_folder'] . "/";
+    $frames = $_SERVER['DOCUMENT_ROOT'] . "/storage/". $params['base_folder'] . "/";
 
     //Set the delay between frames
     /*
@@ -71,8 +71,8 @@ function createGIF($params)
     $anim->create($frames, $durations, $params['loops'] - 1);
 
     //Save it in the same folder for future download
-    $anim->save($_SERVER['DOCUMENT_ROOT'] . "storage/". $params['base_folder'] . "/anim.gif");
+    $anim->save($_SERVER['DOCUMENT_ROOT'] . "/storage/". $params['base_folder'] . "/anim.gif");
 
     //Return the GIF path
-    return "storage/". $params['base_folder'] . "/anim.gif";
+    return "/storage/". $params['base_folder'] . "/anim.gif";
 }

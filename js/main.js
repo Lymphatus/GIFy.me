@@ -109,7 +109,6 @@ $(document).ready(function () {
                 previewImage.find("img").attr("src", file.preview.toDataURL());
             }
         });
-        currentImagesNumber++;
     }).on('fileuploadprocessalways', function (e, data) {
         $.each(data.files, function (index, file) {
             if (file.error) {
@@ -121,6 +120,7 @@ $(document).ready(function () {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('.progress').val(progress);
     }).on('fileuploaddone', function (e, data) {
+        currentImagesNumber++;
         $("#create-button").attr("disabled", currentImagesNumber !== 4);
     }).on('fileuploadfail', function (e, data) {
         $.each(data.files, function (index, file) {
