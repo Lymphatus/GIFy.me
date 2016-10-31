@@ -8,18 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- JavaScript
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-    <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-    <script src="js/jquery.ui.widget.js"></script>
-    <script src="js/jquery.iframe-transport.js"></script>
-    <script src="js/jquery.fileupload.js"></script>
-    <script src="js/jquery.fileupload-image.js"></script>
-    <script src="js/jquery.fileupload-process.js"></script>
-    <script src="js/jquery.fileupload-validate.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/uploader.js"></script> -->
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/load-image.all.min.js"></script>
     <script src="js/jquery.ui.widget.js"></script>
@@ -64,74 +52,77 @@
                 </div>
                 <input id="fileupload" type="file" name="files[]" multiple hidden>
             </div>
-            <div id="files">
-                <div class="tile is-ancestor">
-                    <!-- TODO long file names should be cropped -->
-                    <div class="tile is-parent is-horizontal" id="context">
-                        <div class="tile is-parent is-3">
-                            <article class="tile is-child notification">
-                                <figure class="image is-4by3">
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="tile is-parent is-3">
-                            <article class="tile is-child notification">
-                                <figure class="image is-4by3">
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="tile is-parent is-3">
-                            <article class="tile is-child notification">
-                                <figure class="image is-4by3">
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="tile is-parent is-3">
-                            <article class="tile is-child notification">
-                                <figure class="image is-4by3">
-                                </figure>
-                            </article>
+            <div id="files-container" hidden>
+                <div id="files">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-horizontal" id="context">
+                            <div class="tile is-parent is-3">
+                                <article class="tile is-child notification">
+                                    <figure class="image is-4by3">
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="tile is-parent is-3">
+                                <article class="tile is-child notification">
+                                    <figure class="image is-4by3">
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="tile is-parent is-3">
+                                <article class="tile is-child notification">
+                                    <figure class="image is-4by3">
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="tile is-parent is-3">
+                                <article class="tile is-child notification">
+                                    <figure class="image is-4by3">
+                                    </figure>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <progress class="progress is-primary" value="0" max="100">30%</progress>
             </div>
-            <progress class="progress is-primary" value="0" max="100">30%</progress>
-            <hr/>
-            <div class="columns is-mobile">
-                <div class="column is-half">
-                    <label class="label">How many loops?</label>
-                    <p class="control">
-                        <input class="input" type="number" min="2" max="99" value="2" id="param-gif-loops" disabled>
-                        <label class="checkbox">
-                            <input type="checkbox" id="infinite-checkbox" checked>
-                            Infinite
-                        </label>
-                    </p>
+            <div id="control-container" hidden>
+                <hr/>
+                <div class="columns is-mobile">
+                    <div class="column is-half">
+                        <label class="label">How many loops?</label>
+                        <p class="control">
+                            <input class="input" type="number" min="2" max="99" value="2" id="param-gif-loops" disabled>
+                            <label class="checkbox">
+                                <input type="checkbox" id="infinite-checkbox" checked>
+                                Infinite
+                            </label>
+                        </p>
+                    </div>
+                    <div class="column is-half">
+                        <label class="label">Delay between frames?</label>
+                        <p class="control">
+                            <input class="input" type="number" min="10" max="5000" value="100" id="param-gif-delay">
+                            <label class="checkbox is-pulled-right">
+                                in milliseconds
+                            </label>
+                        </p>
+                    </div>
                 </div>
-                <div class="column is-half">
-                    <label class="label">Delay between frames?</label>
-                    <p class="control">
-                        <input class="input" type="number" min="10" max="5000" value="100" id="param-gif-delay">
-                        <label class="checkbox is-pulled-right">
-                            in milliseconds
-                        </label>
-                    </p>
-                </div>
-            </div>
-            <div class="columns is-mobile">
-                <!-- TODO Button is not centered on resize -->
-                <div class="column is-2 is-offset-5">
-                    <a class="button is-large is-primary" id="create-button" disabled download>
-                        <span class="icon"><i class="fa fa-gear" id="create-button-icon"></i></span>
-                        <span id="create-button-label">Create GIF!</span>
-                    </a>
+                <div class="columns is-mobile">
+                    <!-- TODO Button is not centered on resize -->
+                    <div class="column is-2 is-offset-5">
+                        <a class="button is-large is-primary" id="create-button" disabled download>
+                            <span class="icon"><i class="fa fa-gear" id="create-button-icon"></i></span>
+                            <span id="create-button-label">Create GIF!</span>
+                        </a>
 
+                    </div>
                 </div>
-            </div>
-            <div class="column is-6 is-offset-3">
-                <figure class="image">
-                    <img id="result">
-                </figure>
+                <div class="column is-6 is-offset-3">
+                    <figure class="image">
+                        <img id="result">
+                    </figure>
+                </div>
             </div>
         </div>
     </div>

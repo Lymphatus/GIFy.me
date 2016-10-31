@@ -25,9 +25,10 @@ $(document).ready(function () {
                 $("#create-button-icon").addClass("fa-download").removeClass("fa-gear");
                 isGIFAvailable = true;
                 $("#result").attr("src", data);
+                $('html, body').animate({
+                    scrollTop: $("#result").offset().top
+                }, 1000);
             })
-        } else {
-
         }
     });
 
@@ -92,10 +93,10 @@ $(document).ready(function () {
     }).on('fileuploadadd', function (e, data) {
         $(".message-body").html("");
         $(".message").attr("hidden", true);
+        $("#files-container").fadeTo(1000, 1.0);
         data.formData = {
             UUID: UUID
         };
-        //TODO
         console.log(data);
     }).on('fileuploadstart', function (e, data) {
 
@@ -123,6 +124,12 @@ $(document).ready(function () {
     }).on('fileuploaddone', function (e, data) {
         currentImagesNumber++;
         $("#create-button").attr("disabled", currentImagesNumber !== 4);
+        if (currentImagesNumber === 4) {
+            $("#control-container").fadeTo(1000, 1.0);
+            $('html, body').animate({
+                scrollTop: $("#control-container").offset().top
+            }, 1000);
+        }
     }).on('fileuploadfail', function (e, data) {
         $.each(data.files, function (index, file) {
             if (file.error) {
