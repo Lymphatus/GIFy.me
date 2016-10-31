@@ -1,7 +1,7 @@
 # GIFy.me
 Piccola web application che combina 4 immagini in una GIF animata scaricabile.
 
-## -> [Sito dimostrativo](meraviglia.pw) <-
+## -> [Sito dimostrativo](http://meraviglia.pw) <-
 
 ### Librerie e tool
 - [jQuery File Upload](https://github.com/blueimp/jQuery-File-Upload) - Upload, anteprima e verifica delle immagini
