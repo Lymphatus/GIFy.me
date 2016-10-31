@@ -129,5 +129,7 @@ $(document).ready(function () {
                 $(".message-body").append("<li>" + file.name + ": " + file.error + "</li>");
             }
         });
+    }).on('fileuploadalways', function (e, data) {
+        console.log(e);
     });
 });
