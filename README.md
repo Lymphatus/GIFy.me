@@ -28,7 +28,7 @@ Viene visualizzato un caricamento e al termine viene proposta un'anteprima della
  - Non viene creata automaticamente la GIF per permettere all'utente di aggiustare i parametri e tiene in considerazioni eventuali altri sviluppi discussi sotto.
  - Mi sono posto la questione su quale sarebbe l'utente target e di quanti controlli necessiterebbe. In questo caso ho interpretato il "4 immagini in sequenza" della mail come una scelta di non permettere di ri-arrangiare le immagini ma un semplice caricamento diretto in sequenza e quindi ho volutamente lasciato l'interfaccia semplice e pulita.
  - Ci sono alcuni limitazioni arbitrarie impostate da me, come il fatto che il numero massimo di loops sia 99 e il delay tra i frame non possa superare i 5s.
- - L'upload delle immagini avviene in una cartella unica, identificata da un UUID (che è "unico") che viene generato al momento dell'upload. Questo permette più utenti di usare l'applicazione contemporaneamente senza il rischio di conflitti.
+ - L'upload delle immagini avviene in una cartella unica, identificata da un UUID (che è "unico") che viene generato al caricamento della pagina. Questo permette più utenti di usare l'applicazione contemporaneamente senza il rischio di conflitti.
  - Le immagini vengono rinominate al momento dell'upload usando una timestamp, per preservarne l'ordine scelto dall'utente.
  - L'applicazione gira solo se è nella root del sito.
  
