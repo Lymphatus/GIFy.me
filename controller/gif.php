@@ -74,5 +74,5 @@ function createGIF($params)
     $anim->save($_SERVER['DOCUMENT_ROOT'] . "/storage/". $params['base_folder'] . "/anim.gif");
 
     //Return the GIF path
-    return "/storage/". $params['base_folder'] . "/anim.gif";
+    return "storage/". $params['base_folder'] . "/anim.gif";
 }
