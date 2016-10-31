@@ -69,7 +69,7 @@ $(document).ready(function () {
     var currentImagesNumber = 0;
     $('#fileupload').fileupload({
         //Max file size is set by php.ini
-        url: "controller/",
+        url: "controller/index.php",
         dataType: 'json',
         acceptFileTypes: /(\.|\/)(jpe?g|png)$/i,
         disableImageResize: false,
