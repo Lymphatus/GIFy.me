@@ -96,8 +96,6 @@ $(document).ready(function () {
     }).on('fileuploadadd', function (e, data) {
         $(".message-body").html("");
         $(".message").attr("hidden", true);
-        //Show the images thumbnail by fading in
-        $("#files-container").fadeTo(1000, 1.0);
         data.formData = {
             UUID: UUID
         };
@@ -120,6 +118,9 @@ $(document).ready(function () {
                 //Show an error if something is wrong
                 $(".message").attr("hidden", false);
                 $(".message-body").append("<li>" + file.name + ": " + file.error + "</li>");
+            } else {
+                //Show the images thumbnail by fading in
+                $("#files-container").fadeTo(1000, 1.0);
             }
         });
     }).on('fileuploadprogressall', function (e, data) {
